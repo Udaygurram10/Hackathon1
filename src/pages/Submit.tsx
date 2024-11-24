@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Upload, Link as LinkIcon, Github } from 'lucide-react';
+import { Link as LinkIcon, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
