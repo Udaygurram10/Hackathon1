@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -29,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               bg-brand-primary/50 border border-brand-gold/20 
               focus:border-brand-gold/50 focus:outline-none 
               transition-all duration-200 ${className}`}
-            {...props}
+            {...(props as MotionProps)} // Cast props to MotionProps to fix the type issue
           />
         </div>
         {error && (
