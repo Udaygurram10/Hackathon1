@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,7 +15,7 @@ export default function Button({
   ...props 
 }: ButtonProps) {
   const baseStyles = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50';
-  
+
   const variants = {
     primary: 'bg-brand-gold text-brand-primary hover:bg-brand-gold/90',
     secondary: 'bg-brand-primary/50 text-white hover:bg-brand-primary/70',
@@ -27,7 +27,7 @@ export default function Button({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={`${baseStyles} ${variants[variant]} ${className}`}
-      {...props}
+      {...(props as MotionProps)} // Cast props to MotionProps to fix the type issue
     >
       {isLoading ? (
         <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
